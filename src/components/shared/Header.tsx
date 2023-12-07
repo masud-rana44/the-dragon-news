@@ -3,6 +3,7 @@ import { Box, Container, Typography } from "@mui/material";
 
 import headerLogo from "../../assets/The Dragon News.png";
 import { getCurrentDate } from "@/utils/getCurrentDate";
+import Headline from "../ui/Headline";
 
 const Header = () => {
   const currentDate = getCurrentDate();
@@ -23,6 +24,7 @@ const Header = () => {
         <Typography color="gray" align="center" variant="body1">
           {currentDate}
         </Typography>
+        <Headline />
       </Container>
     </Box>
   );
