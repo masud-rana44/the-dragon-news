@@ -14,42 +14,54 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Link from "next/link";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = [
+  {
+    label: "Home",
+    href: "/home",
+  },
+  {
+    label: "About",
+    href: "/about",
+  },
+  {
+    label: "Career",
+    href: "/career",
+  },
+];
 
 function Navbar() {
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{ bgcolor: "white", shadow: "none", color: "gray" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              display: { xs: "none", md: "flex" },
+              columnGap: 8,
+              width: "full",
+              justifyContent: "center",
             }}
           >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                // onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
+            {pages.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
             ))}
+          </Box>
+          <Box>
+            <Button
+              variant="contained"
+              sx={{ my: 2, backgroundColor: "black", color: "white" }}
+              className="bg-gray-800 text-white px-4 hover:bg-gray-700"
+            >
+              Login
+            </Button>
           </Box>
         </Toolbar>
       </Container>
